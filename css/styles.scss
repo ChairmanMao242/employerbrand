@@ -1,0 +1,614 @@
+/* ==========================================================================
+   ITCSS ARCHITECTURE
+   ========================================================================== */
+
+/* ==========================================================================
+   #SETTINGS
+   Design tokens, variables, config switches
+   ========================================================================== */
+
+// Colors
+$color-primary: #ff8428;
+$color-primary-hover: #e67520;
+$color-secondary: #092a4a;
+$color-tertiary: #f7d81f;
+$color-white: #ffffff;
+$color-light-gray: #f5f5f5;
+$color-text-light: #52668e;
+
+// Gradients
+$gradient-purple: radial-gradient(
+    circle at 70% 120%,
+    rgba(202, 111, 201, 1) 0%,
+    rgba(140, 106, 171, 1) 25.962%,
+    rgba(108, 104, 155, 1) 38.942%,
+    rgba(77, 102, 140, 1) 51.923%,
+    rgba(43, 72, 107, 1) 75.962%,
+    rgba(26, 57, 90, 1) 87.981%,
+    rgba(9, 42, 74, 1) 100%
+);
+
+// Typography
+$font-family-primary: "Barlow Semi Condensed", sans-serif;
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;
+
+// Container
+$container-max-width: 1200px;
+
+/* ==========================================================================
+   #TOOLS
+   Mixins and functions
+   ========================================================================== */
+
+@mixin respond-to($breakpoint) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin grid-two-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 47px;
+
+    @include respond-to($breakpoint-mobile) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   #GENERIC
+   Ground-zero styles (normalize, reset)
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   #ELEMENTS
+   Unclassed HTML elements
+   ========================================================================== */
+
+body {
+    font-family: $font-family-primary;
+    background-color: $color-light-gray;
+    line-height: 1.6;
+    color: $color-secondary;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+input {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+/* ==========================================================================
+   #OBJECTS
+   Class-based selectors for design patterns, layout primitives
+   ========================================================================== */
+
+.wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 49px;
+}
+
+/* ==========================================================================
+   #COMPONENTS
+   Specific UI components (BEM)
+   ========================================================================== */
+
+/* Logo Component
+   ========================================================================== */
+
+.logo {
+    position: absolute;
+    top: 36px;
+    left: 47px;
+    height: 38px;
+    width: 124px;
+    display: block;
+}
+
+section {
+    width: $container-max-width;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.icon.icon--star.icon--star-small {
+    width: 87px;
+    height: 94px;
+    display: block;
+    position: absolute;
+    margin-left: -53px;
+    margin-top: -25px;
+}
+
+.icon--star.icon--top-right {
+    position: absolute;
+    width: 141px;
+    height: 152px;
+    transform: rotate(-2.731deg);
+    top: -42px;
+    right: -32px;
+}
+
+.book {
+    &__image {
+        max-width: none;
+        position: absolute;
+        top: 0;
+        height: 678px;
+    }
+}
+/* Hero Component
+   ========================================================================== */
+
+.hero {
+    background: $gradient-purple;
+    border-radius: 29px 58px 29px 29px;
+    padding: 0 80px;
+    margin-bottom: 50px;
+    position: relative;
+
+    @include respond-to($breakpoint-mobile) {
+    }
+
+    &__header {
+        @include flex-between;
+    }
+
+    &__content {
+        display: flex;
+        align-items: flex-start;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+
+    &__text {
+        padding-top: 153px;
+        padding-bottom: 106px;
+        width: 614px;
+    }
+
+    &__title {
+        color: $color-white;
+        font-family: "Barlow Semi Condensed";
+        font-size: 54px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 54px; /* 100% */
+        margin-bottom: 25px;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+
+    &__subtitle {
+        color: $color-white;
+        font-family: "Barlow Semi Condensed";
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px; /* 123.077% */
+        margin-bottom: 37px;
+
+        @include respond-to($breakpoint-mobile) {
+            font-size: 1.25rem;
+        }
+    }
+
+    .book {
+        text-align: right;
+        position: relative;
+        margin-top: 28px;
+        flex: 1;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+}
+
+/* Section Component
+   ========================================================================== */
+
+.section {
+    border-radius: 29px;
+    padding: 80px 80px 44px;
+    margin-bottom: 50px;
+
+    @include respond-to($breakpoint-mobile) {
+    }
+
+    &--white {
+        background: $color-white;
+    }
+
+    &--purple {
+        background: $gradient-purple;
+        border-radius: 29px 58px 29px 29px;
+        position: relative;
+    }
+
+    &__content {
+        display: flex;
+        align-items: flex-start;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+
+    &__text {
+        width: 614px;
+    }
+
+    .book {
+        position: relative;
+        top: 137px;
+    }
+
+    &--final {
+        padding-bottom: 77px;
+        padding-top: 90px;
+
+        .section {
+            &__title {
+                text-indent: 40px;
+                margin-bottom: 10px;
+            }
+
+            &__subtitle {
+                margin-bottom: 24px;
+            }
+
+            &__text {
+                width: 717px;
+            }
+        }
+
+        .book {
+            top: -61px;
+            &__image {
+                height: 439px;
+            }
+        }
+    }
+
+    &__decoration {
+        text-align: right;
+    }
+
+    &__title {
+        color: $color-secondary;
+        font-family: "Barlow Semi Condensed";
+        font-size: 46px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 49px; /* 106.522% */
+
+        /* remove line-height top gap */
+        position: relative;
+        top: -9px;
+
+        margin-bottom: 60px;
+
+        .section--faq & {
+            margin-bottom: 20px;
+        }
+
+        @include respond-to($breakpoint-mobile) {
+        }
+
+        &--light {
+            color: $color-white;
+        }
+
+        &--large {
+            color: $color-white;
+            font-family: "Barlow Semi Condensed";
+            font-size: 64px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 64px; /* 100% */
+
+            @include respond-to($breakpoint-mobile) {
+            }
+        }
+    }
+
+    &__subtitle {
+        font-size: 1.5rem;
+
+        &--light {
+            color: $color-white;
+        }
+    }
+}
+
+/* List Component
+   ========================================================================== */
+
+.list {
+    &--reasons {
+        @include grid-two-columns;
+        gap: 47px;
+        position: relative;
+        top: -15px;
+    }
+
+    &--audience {
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+        position: relative;
+        top: -2px;
+    }
+
+    &__item {
+        display: flex;
+        gap: 9px;
+        align-items: flex-start;
+    }
+
+    &__icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        @include flex-center;
+        flex-shrink: 0;
+
+        &--dark {
+            background-color: $color-secondary;
+        }
+
+        &--orange {
+            background-color: $color-primary;
+        }
+    }
+
+    &__text {
+        color: $color-secondary;
+        font-family: "Barlow Semi Condensed";
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px; /* 107.692% */
+
+        @include respond-to($breakpoint-mobile) {
+            font-size: 1.25rem;
+        }
+
+        &--light {
+            color: $color-white;
+        }
+    }
+}
+
+/* Form Component
+   ========================================================================== */
+
+.form {
+    &__group {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 10px;
+    }
+
+    &__input {
+        flex: 1;
+        padding: 20px 28px;
+        border-radius: 10px;
+        background: $color-white;
+
+        color: $color-text-light;
+
+        font-family: "Barlow Semi Condensed";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 19px; /* 105.556% */
+        flex: 0 0 350px;
+        width: 350px;
+        max-width: 100%;
+
+        &::placeholder {
+            color: $color-text-light;
+        }
+    }
+
+    &__submit {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        background: $color-primary;
+        @include flex-center;
+        flex-shrink: 0;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $color-primary-hover;
+        }
+    }
+
+    &__note {
+        color: $color-white;
+        font-family: "Barlow Semi Condensed";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19px; /* 105.556% */
+
+        &--dark {
+            color: $color-secondary;
+
+            text-align: center;
+            font-family: "Barlow Semi Condensed";
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px; /* 155.556% */
+        }
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: $color-white;
+
+        &--dark {
+            fill: $color-secondary;
+        }
+    }
+}
+
+/* Button Component
+   ========================================================================== */
+
+.button {
+    padding: 18px 17px 18px 34px;
+    border-radius: 10px;
+
+    font-family: "Barlow Semi Condensed";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 110% */
+    text-transform: uppercase;
+    gap: 17px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+
+    @include respond-to($breakpoint-mobile) {
+        font-size: 1rem;
+    }
+
+    &--primary {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-primary-hover;
+        }
+    }
+
+    &__text {
+        // Button text wrapper
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* CTA Component
+   ========================================================================== */
+
+.cta {
+    margin-top: 67px;
+    position: relative;
+    top: -14px;
+
+    &--center {
+        text-align: center;
+    }
+
+    &__note {
+        font-size: 1.125rem;
+
+        &--dark {
+            color: $color-secondary;
+        }
+
+        &--light {
+            color: $color-white;
+        }
+    }
+}
+
+/* FAQ Component
+   ========================================================================== */
+
+.faq {
+    border-left: 4px solid $color-secondary;
+    padding-left: 24px;
+    margin-bottom: 34px;
+
+    &__question {
+        color: $color-secondary;
+        font-family: "Barlow Semi Condensed";
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+
+    &__answer {
+        color: $color-secondary;
+        color: $color-secondary;
+        font-family: "Barlow Semi Condensed";
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+}
+
+/* ==========================================================================
+   #UTILITIES
+   Helper classes with ability to override anything
+   ========================================================================== */
+
+// Intentionally left minimal - no utility classes needed for this design

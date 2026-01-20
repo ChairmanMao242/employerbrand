@@ -1,0 +1,457 @@
+/* ==========================================================================
+   ITCSS ARCHITECTURE
+   ========================================================================== */
+/* ==========================================================================
+   #SETTINGS
+   Design tokens, variables, config switches
+   ========================================================================== */
+/* ==========================================================================
+   #TOOLS
+   Mixins and functions
+   ========================================================================== */
+/* ==========================================================================
+   #GENERIC
+   Ground-zero styles (normalize, reset)
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   #ELEMENTS
+   Unclassed HTML elements
+   ========================================================================== */
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+  color: #092a4a;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+/* ==========================================================================
+   #OBJECTS
+   Class-based selectors for design patterns, layout primitives
+   ========================================================================== */
+.wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 49px;
+}
+
+/* ==========================================================================
+   #COMPONENTS
+   Specific UI components (BEM)
+   ========================================================================== */
+/* Logo Component
+   ========================================================================== */
+.logo {
+  position: absolute;
+  top: 36px;
+  left: 47px;
+  height: 38px;
+  width: 124px;
+  display: block;
+}
+
+section {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.icon.icon--star.icon--star-small {
+  width: 87px;
+  height: 94px;
+  display: block;
+  position: absolute;
+  margin-left: -53px;
+  margin-top: -25px;
+}
+
+.icon--star.icon--top-right {
+  position: absolute;
+  width: 141px;
+  height: 152px;
+  transform: rotate(-2.731deg);
+  top: -42px;
+  right: -32px;
+}
+
+.book__image {
+  max-width: none;
+  position: absolute;
+  top: 0;
+  height: 678px;
+}
+
+/* Hero Component
+   ========================================================================== */
+.hero {
+  background: radial-gradient(circle at 70% 120%, rgb(202, 111, 201) 0%, rgb(140, 106, 171) 25.962%, rgb(108, 104, 155) 38.942%, rgb(77, 102, 140) 51.923%, rgb(43, 72, 107) 75.962%, rgb(26, 57, 90) 87.981%, rgb(9, 42, 74) 100%);
+  border-radius: 29px 58px 29px 29px;
+  padding: 0 80px;
+  margin-bottom: 50px;
+  position: relative;
+}
+.hero__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero__content {
+  display: flex;
+  align-items: flex-start;
+}
+.hero__text {
+  padding-top: 153px;
+  padding-bottom: 106px;
+  width: 614px;
+}
+.hero__title {
+  color: #ffffff;
+  font-family: "Barlow Semi Condensed";
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 54px; /* 100% */
+  margin-bottom: 25px;
+}
+.hero__subtitle {
+  color: #ffffff;
+  font-family: "Barlow Semi Condensed";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px; /* 123.077% */
+  margin-bottom: 37px;
+}
+@media (max-width: 768px) {
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+}
+.hero .book {
+  text-align: right;
+  position: relative;
+  margin-top: 28px;
+  flex: 1;
+}
+/* Section Component
+   ========================================================================== */
+.section {
+  border-radius: 29px;
+  padding: 80px 80px 44px;
+  margin-bottom: 50px;
+}
+.section--white {
+  background: #ffffff;
+}
+.section--purple {
+  background: radial-gradient(circle at 70% 120%, rgb(202, 111, 201) 0%, rgb(140, 106, 171) 25.962%, rgb(108, 104, 155) 38.942%, rgb(77, 102, 140) 51.923%, rgb(43, 72, 107) 75.962%, rgb(26, 57, 90) 87.981%, rgb(9, 42, 74) 100%);
+  border-radius: 29px 58px 29px 29px;
+  position: relative;
+}
+.section__content {
+  display: flex;
+  align-items: flex-start;
+}
+.section__text {
+  width: 614px;
+}
+.section .book {
+  position: relative;
+  top: 137px;
+}
+.section--final {
+  padding-bottom: 77px;
+  padding-top: 90px;
+}
+.section--final .section__title {
+  text-indent: 40px;
+  margin-bottom: 10px;
+}
+.section--final .section__subtitle {
+  margin-bottom: 24px;
+}
+.section--final .section__text {
+  width: 717px;
+}
+.section--final .book {
+  top: -61px;
+}
+.section--final .book__image {
+  height: 439px;
+}
+.section__decoration {
+  text-align: right;
+}
+.section__title {
+  color: #092a4a;
+  font-family: "Barlow Semi Condensed";
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 49px; /* 106.522% */
+  /* remove line-height top gap */
+  position: relative;
+  top: -9px;
+  margin-bottom: 60px;
+}
+.section--faq .section__title {
+  margin-bottom: 20px;
+}
+.section__title--light {
+  color: #ffffff;
+}
+.section__title--large {
+  color: #ffffff;
+  font-family: "Barlow Semi Condensed";
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 64px; /* 100% */
+}
+.section__subtitle {
+  font-size: 1.5rem;
+}
+.section__subtitle--light {
+  color: #ffffff;
+}
+
+/* List Component
+   ========================================================================== */
+.list--reasons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 47px;
+  gap: 47px;
+  position: relative;
+  top: -15px;
+}
+@media (max-width: 768px) {
+  .list--reasons {
+    grid-template-columns: 1fr;
+  }
+}
+.list--audience {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  position: relative;
+  top: -2px;
+}
+.list__item {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+}
+.list__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.list__icon--dark {
+  background-color: #092a4a;
+}
+.list__icon--orange {
+  background-color: #ff8428;
+}
+.list__text {
+  color: #092a4a;
+  font-family: "Barlow Semi Condensed";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 107.692% */
+}
+@media (max-width: 768px) {
+  .list__text {
+    font-size: 1.25rem;
+  }
+}
+.list__text--light {
+  color: #ffffff;
+}
+
+/* Form Component
+   ========================================================================== */
+.form__group {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.form__input {
+  flex: 1;
+  padding: 20px 28px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #52668e;
+  font-family: "Barlow Semi Condensed";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 19px; /* 105.556% */
+  flex: 0 0 350px;
+  width: 350px;
+  max-width: 100%;
+}
+.form__input::placeholder {
+  color: #52668e;
+}
+.form__submit {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #ff8428;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+.form__submit:hover {
+  background-color: #e67520;
+}
+.form__note {
+  color: #ffffff;
+  font-family: "Barlow Semi Condensed";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px; /* 105.556% */
+}
+.form__note--dark {
+  color: #092a4a;
+  text-align: center;
+  font-family: "Barlow Semi Condensed";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 155.556% */
+}
+.form svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+}
+.form svg--dark {
+  fill: #092a4a;
+}
+
+/* Button Component
+   ========================================================================== */
+.button {
+  padding: 18px 17px 18px 34px;
+  border-radius: 10px;
+  font-family: "Barlow Semi Condensed";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 110% */
+  text-transform: uppercase;
+  gap: 17px;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .button {
+    font-size: 1rem;
+  }
+}
+.button--primary {
+  background-color: #ff8428;
+  color: #ffffff;
+}
+.button--primary:hover {
+  background-color: #e67520;
+}
+.button__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* CTA Component
+   ========================================================================== */
+.cta {
+  margin-top: 67px;
+  position: relative;
+  top: -14px;
+}
+.cta--center {
+  text-align: center;
+}
+.cta__note {
+  font-size: 1.125rem;
+}
+.cta__note--dark {
+  color: #092a4a;
+}
+.cta__note--light {
+  color: #ffffff;
+}
+
+/* FAQ Component
+   ========================================================================== */
+.faq {
+  border-left: 4px solid #092a4a;
+  padding-left: 24px;
+  margin-bottom: 34px;
+}
+.faq__question {
+  color: #092a4a;
+  font-family: "Barlow Semi Condensed";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
+.faq__answer {
+  color: #092a4a;
+  color: #092a4a;
+  font-family: "Barlow Semi Condensed";
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+/* ==========================================================================
+   #UTILITIES
+   Helper classes with ability to override anything
+   ========================================================================== */
