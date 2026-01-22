@@ -36,7 +36,7 @@
                         <div class="tablet" data-include="template-parts/book.html"></div>
                     </div>
                     <div>
-                        <form class="form form--hero" id="hubspotForm" data-region="eu1"
+                        <form class="form form--hero js-hubspot-form" id="hubspotFormHero" data-region="eu1"
                             data-form-id="551c7643-2cb4-4107-930f-4534da9567d6" data-portal-id="147638751">
                             <div class="form__group">
                                 <input type="email" name="email" class="form__input"
@@ -48,8 +48,16 @@
                                     </svg>
                                 </button>
                             </div>
+                            <div class="form__checkbox-group">
+                                <input type="checkbox" name="privacy_consent" class="form__checkbox" required>
+                                <label for="privacy-consent" class="form__checkbox-label" style="color:white">
+                                    Accetto di ricevere il booklet e altre comunicazioni da Stralent<span
+                                        style="color:#FF8428;">*</span>
+                                </label>
+                            </div>
+
                             <p class="form__note">Riceverai direttamente la tua copia omaggio</p>
-                            <p class="form__message" style="display: none; margin-top: 10px; color: #28a745;"></p>
+                            <p class="form__note" style="display: none; margin-top: 10px; color: #28a745;"></p>
                         </form>
                     </div>
                 </div>
@@ -141,7 +149,14 @@
             </ul>
 
             <div class="cta cta--center">
-                <div data-include="template-parts/button.html"></div>
+                <div>
+                    <button class="button button--primary button--with-icon" data-scroll="#top">
+                        <span class="button__text">Ottieni ora la guida strategica</span>
+                        <svg class="button__icon" viewBox="0 0 24 24" fill="none" style="width: 23px; height: 24px;">
+                            <path d="M3 20V4L22 12L3 20ZM5 17L16.85 12L5 7V10.5L11 12L5 13.5V17Z" fill="white" />
+                        </svg>
+                    </button>
+                </div>
                 <p class="cta__note cta__note--dark">Tempo di Lettura: 14 minuti ca.</p>
             </div>
         </section>
@@ -258,7 +273,16 @@
 
 
                     <div class="cta">
-                        <div data-include="template-parts/button.html"></div>
+                        <div>
+                            <button class="button button--primary button--with-icon" data-scroll="#top">
+                                <span class="button__text">Ottieni ora la guida strategica</span>
+                                <svg class="button__icon" viewBox="0 0 24 24" fill="none"
+                                    style="width: 23px; height: 24px;">
+                                    <path d="M3 20V4L22 12L3 20ZM5 17L16.85 12L5 7V10.5L11 12L5 13.5V17Z"
+                                        fill="white" />
+                                </svg>
+                            </button>
+                        </div>
                         <p class="cta__note cta__note--light">Tempo di Lettura: 14 minuti ca.</p>
                     </div>
                 </div>
@@ -319,7 +343,7 @@
                     </div>
 
                     <div>
-                        <form class="form form--hero" id="hubspotForm" data-region="eu1"
+                        <form class="form form--hero js-hubspot-form" id="hubspotFormFinal" data-region="eu1"
                             data-form-id="551c7643-2cb4-4107-930f-4534da9567d6" data-portal-id="147638751">
                             <div class="form__group">
                                 <input type="email" name="email" class="form__input"
@@ -331,8 +355,15 @@
                                     </svg>
                                 </button>
                             </div>
+                            <div class="form__checkbox-group">
+                                <input type="checkbox" name="privacy_consent" class="form__checkbox" required>
+                                <label for="privacy-consent" class="form__checkbox-label" style="color:white">
+                                    Accetto di ricevere il booklet e altre comunicazioni da Stralent<span
+                                        style="color:#FF8428;">*</span>
+                                </label>
+                            </div>
                             <p class="form__note">Riceverai direttamente la tua copia omaggio</p>
-                            <p class="form__message" style="display: none; margin-top: 10px; color: #28a745;"></p>
+                            <p class="form__note" style="display: none; margin-top: 10px; color: #28a745;"></p>
                         </form>
                     </div>
                 </div>
@@ -346,63 +377,70 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('hubspotForm');
-            const messageEl = form.querySelector('.form__message');
+            const forms = document.querySelectorAll('form.js-hubspot-form[data-portal-id][data-form-id]');
 
-            form.addEventListener('submit', async function (e) {
-                e.preventDefault();
+            forms.forEach((form) => {
+                const messageEl = form.querySelector('.form__note');
+                const submitButton = form.querySelector('.form__submit');
 
-                const email = form.querySelector('input[name="email"]').value;
-                const portalId = form.dataset.portalId;
-                const formId = form.dataset.formId;
-                const region = form.dataset.region;
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
 
-                // Costruisci l'URL dell'API HubSpot
-                const apiUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+                    const emailInput = form.querySelector('input[name="email"]');
+                    const email = emailInput ? emailInput.value : '';
+                    const portalId = form.dataset.portalId;
+                    const formId = form.dataset.formId;
 
-                // Prepara i dati del form
-                const data = {
-                    fields: [
-                        {
-                            name: 'email',
-                            value: email
+                    if (submitButton) submitButton.disabled = true;
+
+                    const apiUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+                    const data = {
+                        fields: [
+                            { name: 'email', value: email }
+                        ],
+                        context: {
+                            pageUri: window.location.href,
+                            pageName: document.title
                         }
-                    ],
-                    context: {
-                        pageUri: window.location.href,
-                        pageName: document.title
-                    }
-                };
+                    };
 
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data)
-                    });
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        });
 
-                    if (response.ok) {
                         const result = await response.json();
-                        messageEl.textContent = 'Grazie! Riceverai presto la tua copia omaggio.';
-                        messageEl.style.color = '#28a745';
-                        messageEl.style.display = 'block';
-                        form.querySelector('input[name="email"]').value = '';
-                        console.log('Successo:', result);
-                        // Reindirizza alla pagina thank-you dopo 2 secondi (opzionale)
-                        setTimeout(() => {
-                            window.location.href = 'thank-you.html';
-                        }, 2000);
-                    } else {
-                        throw new Error('Errore nell\'invio del form');
+                        console.log('HubSpot response:', result);
+
+                        if (response.ok) {
+                            if (messageEl) {
+                                messageEl.textContent = 'Grazie! Riceverai presto la tua copia omaggio.';
+                                messageEl.style.color = '#28a745';
+                                messageEl.style.display = 'block';
+                            }
+                            if (emailInput) emailInput.value = '';
+
+                            setTimeout(() => {
+                                window.location.href = 'thank-you.html';
+                            }, 1500);
+                        } else {
+                            const errorMessage = result.errors?.[0]?.message || 'Errore nell\'invio del form';
+                            throw new Error(errorMessage);
+                        }
+                    } catch (error) {
+                        console.error('Errore:', error);
+                        if (messageEl) {
+                            messageEl.textContent = 'Si è verificato un errore. Riprova più tardi.';
+                            messageEl.style.color = '#dc3545';
+                            messageEl.style.display = 'block';
+                        }
+                    } finally {
+                        if (submitButton) submitButton.disabled = false;
                     }
-                } catch (error) {
-                    console.error('Errore:', error);
-                    messageEl.textContent = 'Si è verificato un errore. Riprova più tardi.';
-                    messageEl.style.color = '#dc3545';
-                    messageEl.style.display = 'block';
-                }
+                });
             });
         });
     </script>
@@ -419,6 +457,22 @@
                     console.error(`Include failed for ${src}`, err);
                     el.innerHTML = '<!-- include failed -->';
                 }
+            });
+
+            // on click on data-scroll buttons, scroll to target (if top, scroll to top)
+            document.querySelectorAll('[data-scroll]').forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetSelector = button.getAttribute('data-scroll');
+                    if (targetSelector === '#top') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        const targetEl = document.querySelector(targetSelector);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
             });
         });
     </script>

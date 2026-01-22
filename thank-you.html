@@ -29,10 +29,10 @@
             <div class="hero__content">
                 <div class="hero__text">
                     <h1 class="hero__title">La guida strategica <br />
-                        è in arrivo nella tua email!</h1>
+                        è disponibile per te!</h1>
                     <div class="subtitle-wrap">
                         <div class="hero__subtitle">
-                            <p>Tra pochi minuti riceverai il booklet “La mente decide in 3
+                            <p><a href="#" class="download">Clicca qui per scaricare</a> il booklet “La mente decide in 3
                                 secondi. Il
                                 tuo Employer Brand è abbastanza forte?” </p>
                             <p><strong>Nel frattempo, hai mai pensato a come il tuo Employer Brand
@@ -71,10 +71,10 @@
 
                 <div class="button-group button-group--center">
 
-                    <button class="button button--primary">
+                    <button class="button button--primary js-scroll-to-form">
                         <span class="button__text">Richiedi assessment gratuito</span>
                     </button>
-                    <button class="button button--primary button--icon">
+                    <button class="button button--primary button--icon js-scroll-to-form">
                         <svg class="button__icon" viewBox="0 0 24 24" fill="none">
                             <path d="M3 20V4L22 12L3 20ZM5 17L16.85 12L5 7V10.5L11 12L5 13.5V17Z" fill="white" />
                         </svg>
@@ -113,7 +113,91 @@
             </div>
         </section>
 
+        <section id="assessment-form" class="section section--white section--form" style="z-index:2">
+            <svg class="icon icon--star icon--top-right" viewBox="0 0 141 152" fill="none">
+                <path d="M45.5 61L0 93L52.5 95.5V152L86 101L141 109L101.5 68.5L124.5 16.5L77.5 42L38 0L45.5 61Z"
+                    fill="#F7D81F" />
+            </svg>
 
+            <div class="section__content">
+                <div class="section__text">
+                    <h2 class="section__title section__title--center">
+                        Richiedi il tuo
+                        assessment gratuito
+                    </h2>
+
+                    <form class="form form--assessment js-hubspot-form" id="hubspotFormAssessment" data-region="eu1"
+                        data-form-id="1b3f60cd-3a79-4b92-b83a-f4be99f433f7" data-portal-id="147638751">
+
+                        <div class="form__field">
+                            <label class="form__label" for="ruolo_aziendale">Ruolo<span style="color:#FF8428;">*</span></label>
+                            <input type="text" id="ruolo_aziendale" name="ruolo_aziendale" class="form__input-text"
+                                placeholder="Segnala il tuo ruolo aziendale" required>
+                        </div>
+
+                        <div class="form__field">
+                            <label class="form__label" for="company">Azienda<span style="color:#FF8428;">*</span></label>
+                            <input type="text" id="company" name="company" class="form__input-text"
+                                placeholder="Inserisci qui il nome della tua azienda" required>
+                        </div>
+
+                        <div class="form__field">
+                            <label class="form__label" for="email">Email<span style="color:#FF8428;">*</span></label>
+                            <input type="email" id="email" name="email" class="form__input-text"
+                                placeholder="Scrivi qui la tua email" required>
+                        </div>
+
+                        <div class="form__field">
+                            <label class="form__label" for="perche_ti_puo_essere_utile_lassessmentany">Perché ti può essere utile l'assessment</label>
+                            <textarea id="perche_ti_puo_essere_utile_lassessmentany" name="perche_ti_puo_essere_utile_lassessmentany" class="form__textarea" rows="4"
+                                placeholder="Raccontaci le tue necessità"></textarea>
+                        </div>
+
+                        <div class="form__privacy">
+                            <p class="form__privacy-note">
+                                Stralent - Mind:In si impegna a proteggere e rispettare la privacy degli utenti: le
+                                informazioni personali raccolte vengono utilizzate solo per amministrare gli account e
+                                fornire i prodotti e servizi richiesti. Gli utenti potrebbero essere contatti con
+                                suggerimenti su prodotti, servizi o altri contenuti che a nostro giudizio potrebbero
+                                interessare loro. Se si desidera essere contattati a questo scopo, selezionare una delle
+                                seguenti modalità di contatto:
+                            </p>
+
+                            <div class="form__checkbox-group">
+                                <input type="checkbox" id="privacy-consent" name="privacy_consent"
+                                    class="form__checkbox" required>
+                                <label for="privacy-consent" class="form__checkbox-label">
+                                    Accetto di ricevere l'assessment gratuito e altre comunicazioni da Stralent<span style="color:#FF8428;">*</span>
+                                </label>
+                            </div>
+
+                            <p class="form__privacy-note">
+                                Puoi annullare l'iscrizione a queste comunicazioni in qualsiasi momento. Per ulteriori
+                                informazioni su come eseguire questa operazione, consultare le nostre normative sulla
+                                privacy e altre indicazioni su protezione e rispetto della privacy, leggi la nostra
+                                Informativa sulla privacy.<br>
+                                Facendo clic sul pulsante qui sotto, si consente a Stralent - Mind:In di archiviare e
+                                utilizzare le informazioni per fornire il contenuto richiesto.
+                            </p>
+                        </div>
+
+                        <div class="button-group button-group--center">
+                            <button type="submit" class="button button--primary">
+                                <span class="button__text">Richiedi assessment gratuito</span>
+                            </button>
+                            <button type="submit" class="button button--primary button--icon">
+                                <svg class="button__icon" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 20V4L22 12L3 20ZM5 17L16.85 12L5 7V10.5L11 12L5 13.5V17Z" fill="white">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <p class="form__message" style="display: none; margin-top: 20px; text-align: center;"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
 
     </div>
 
@@ -129,6 +213,118 @@
                     console.error(`Include failed for ${src}`, err);
                     el.innerHTML = '<!-- include failed -->';
                 }
+            });
+        });
+
+        // Smooth scroll to form
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.js-scroll-to-form').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('assessment-form')?.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                });
+            });
+        });
+
+        // HubSpot Form Handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const forms = document.querySelectorAll('form.js-hubspot-form[data-portal-id][data-form-id]');
+
+            forms.forEach((form) => {
+                const messageEl = form.querySelector('.form__message');
+                const submitButtons = form.querySelectorAll('button[type="submit"]');
+
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    // Validate privacy checkbox
+                    const privacyCheckbox = form.querySelector('input[name="privacy_consent"]');
+                    if (privacyCheckbox && !privacyCheckbox.checked) {
+                        if (messageEl) {
+                            messageEl.textContent = '⚠ Devi accettare la privacy policy per continuare';
+                            messageEl.style.color = '#ff8428';
+                            messageEl.style.display = 'block';
+                            
+                            // Scroll to message
+                            messageEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            
+                            // Highlight checkbox
+                            privacyCheckbox.parentElement.style.outline = '2px solid #ff8428';
+                            setTimeout(() => {
+                                privacyCheckbox.parentElement.style.outline = '';
+                            }, 3000);
+                        }
+                        return;
+                    }
+
+                    // Gather form data
+                    const formData = new FormData(form);
+                    const portalId = form.dataset.portalId;
+                    const formId = form.dataset.formId;
+
+                    // Disable all submit buttons
+                    submitButtons.forEach(btn => btn.disabled = true);
+
+                    const apiUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+                    // Build fields array from form data
+                    const fields = [];
+                    for (const [name, value] of formData.entries()) {
+                        if (name !== 'privacy_consent') {
+                            fields.push({ name, value });
+                        }
+                    }
+
+                    const data = {
+                        fields,
+                        context: {
+                            pageUri: window.location.href,
+                            pageName: document.title
+                        }
+                    };
+
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        });
+
+                        const result = await response.json();
+                        console.log('HubSpot response:', result);
+
+                        if (response.ok) {
+                            if (messageEl) {
+                                messageEl.textContent = 'Grazie! Riceverai presto il tuo assessment gratuito.';
+                                messageEl.style.color = '#28a745';
+                                messageEl.style.display = 'block';
+                            }
+
+                            // Clear form
+                            form.reset();
+
+                            // Optional: scroll to message
+                            if (messageEl) {
+                                messageEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                        } else {
+                            const errorMessage = result.errors?.[0]?.message || 'Errore nell\'invio del form';
+                            throw new Error(errorMessage);
+                        }
+                    } catch (error) {
+                        console.error('Errore:', error);
+                        if (messageEl) {
+                            messageEl.textContent = 'Si è verificato un errore. Riprova più tardi.';
+                            messageEl.style.color = '#dc3545';
+                            messageEl.style.display = 'block';
+                        }
+                    } finally {
+                        submitButtons.forEach(btn => btn.disabled = false);
+                    }
+                });
             });
         });
     </script>
