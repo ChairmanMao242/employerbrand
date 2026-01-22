@@ -130,6 +130,11 @@ section {
   top: 0;
   height: 678px;
 }
+.page-thank-you .desktop .book__image {
+  top: auto;
+  bottom: -70px;
+  height: 700px;
+}
 
 /* Hero Component
    ========================================================================== */
@@ -139,6 +144,7 @@ section {
   padding: 0 80px;
   margin-bottom: 50px;
   position: relative;
+  z-index: 2;
 }
 .hero__header {
   display: flex;
@@ -155,7 +161,8 @@ section {
   width: 614px;
 }
 .page-thank-you .hero__text {
-  padding-top: 192px;
+  width: 550px;
+  padding-top: 260px;
   padding-bottom: 154px;
 }
 .hero__title {
@@ -175,13 +182,17 @@ section {
   font-weight: 400;
   line-height: 32px; /* 123.077% */
 }
+.page-thank-you .hero__subtitle {
+  width: 500px;
+  max-width: 100%;
+}
 .hero__subtitle strong {
   font-weight: 700;
 }
-.hero__subtitle + .hero__subtitle {
+.hero__subtitle p + p {
   margin-top: 19px;
 }
-.page-thank-you .hero__subtitle + .hero__subtitle {
+.page-thank-you .hero__subtitle p + p {
   max-width: 540px;
 }
 .hero .subtitle-wrap + div > form {
@@ -205,7 +216,11 @@ section {
   .hero__text {
     padding-top: 122px;
     padding-bottom: 40px;
-    width: 100%;
+    width: 100% !important;
+  }
+  .page-thank-you .hero__text {
+    padding-top: 122px;
+    padding-bottom: 0;
   }
   .hero__logo {
     top: 21px;
@@ -236,6 +251,9 @@ section {
     width: 100%;
     aspect-ratio: 300/511;
     top: -30px;
+  }
+  .page-thank-you .hero .subtitle-wrap .book {
+    margin-bottom: -100px;
   }
   .hero .subtitle-wrap .book img {
     position: absolute;
@@ -314,6 +332,52 @@ section {
 }
 .section--assessment {
   padding: 45px 40px 33px;
+}
+@media (max-width: 1279px) {
+  .section--assessment .section__title,
+  .section--assessment .feature__title {
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 49px; /* 106.522% */
+  }
+  .section--assessment .section__text,
+  .section--assessment .feature__text {
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+  }
+  .section--assessment .section-grid,
+  .section--assessment .feature-grid {
+    gap: 5px;
+  }
+  .section--assessment .benefit-list__item {
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+    padding-bottom: 15px;
+  }
+}
+@media (max-width: 991px) {
+  .section--assessment .assessment__benefits {
+    padding: 35px 20px 20px;
+  }
+  .section--assessment button.button.button--primary.button--icon {
+    display: none;
+  }
+  .section--assessment .feature {
+    justify-content: left;
+  }
+  .section--assessment .section__title,
+  .section--assessment .feature__title {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 100% */
+    text-align: left;
+  }
+  .section--assessment .section__title br,
+  .section--assessment .feature__title br {
+    display: none;
+  }
 }
 .section__content {
   display: flex;

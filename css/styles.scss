@@ -197,6 +197,12 @@ section {
             position: absolute;
             top: 0;
             height: 678px;
+
+            .page-thank-you & {
+                top: auto;
+                bottom: -70px;
+                height: 700px;
+            }
         }
     }
 }
@@ -209,6 +215,7 @@ section {
     padding: 0 80px;
     margin-bottom: 50px;
     position: relative;
+    z-index: 2;
 
     @include respond-to($breakpoint-mobile) {
     }
@@ -231,7 +238,8 @@ section {
         width: 614px;
 
         .page-thank-you & {
-            padding-top: 192px;
+            width: 550px;
+            padding-top: 260px;
             padding-bottom: 154px;
         }
     }
@@ -254,13 +262,18 @@ section {
             font-style: normal;
             font-weight: 400;
             line-height: 32px; /* 123.077% */
+
+            .page-thank-you & {
+                width: 500px;
+                max-width: 100%;
+            }
         }
 
         strong {
             font-weight: 700;
         }
 
-        + .hero__subtitle {
+        p + p {
             margin-top: 19px;
 
             .page-thank-you & {
@@ -298,13 +311,19 @@ section {
         &__text {
             padding-top: 122px;
             padding-bottom: 40px;
-            width: 100%;
+            width: 100% !important;
+
+            .page-thank-you & {
+                padding-top: 122px;
+                padding-bottom: 0;
+            }
         }
 
         &__logo {
             top: 21px;
             left: 28px;
         }
+
         .subtitle-wrap {
             display: flex;
             flex-wrap: wrap;
@@ -330,11 +349,16 @@ section {
                     }
                 }
             }
+
             .book {
                 position: relative;
                 width: 100%;
                 aspect-ratio: 300 / 511;
                 top: -30px;
+
+                .page-thank-you & {
+                    margin-bottom: -100px;
+                }
 
                 img {
                     position: absolute;
@@ -434,6 +458,56 @@ section {
 
     &--assessment {
         padding: 45px 40px 33px;
+
+        @include respond-to($breakpoint-desktop) {
+            .section,
+            .feature {
+                &__title {
+                    font-size: 46px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 49px; /* 106.522% */
+                }
+                &__text {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+                }
+                &-grid {
+                    gap: 5px;
+                }
+            }
+            .benefit-list__item {
+                font-size: 20px;
+                line-height: 24px; /* 120% */
+                padding-bottom: 15px;
+            }
+        }
+
+        @include respond-to($breakpoint-tablet) {
+            .assessment__benefits {
+                padding: 35px 20px 20px;
+            }
+            button.button.button--primary.button--icon {
+                display: none;
+            }
+            .feature {
+                justify-content: left;
+            }
+            .section,
+            .feature {
+                &__title {
+                    font-size: 36px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 36px; /* 100% */
+                    text-align: left;
+
+                    br {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
     &__content {
