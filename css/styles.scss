@@ -165,6 +165,13 @@ section {
         margin-left: -23px;
         margin-top: -20px;
     }
+
+    @include respond-to($breakpoint-mobile) {
+        width: 35.31px;
+        height: 35.31px;
+        margin-left: 0;
+        margin-top: -6px;
+    }
 }
 
 .icon--star.icon--top-right {
@@ -475,6 +482,10 @@ section {
             }
         }
 
+        .title-book__wrap + div {
+            display: none !important;
+        }
+
         @include respond-to($breakpoint-desktop) {
             flex-wrap: wrap;
 
@@ -493,6 +504,7 @@ section {
                     max-width: 65%;
                 }
             }
+
             .book {
                 &__image {
                     height: 389px;
@@ -503,14 +515,75 @@ section {
         @include respond-to($breakpoint-tablet) {
             padding-top: 62px;
             padding-bottom: 52px;
+
             .book {
-                &__image{
+                &__image {
                     height: 339px;
                     top: 30px;
                 }
             }
         }
+
         @include respond-to($breakpoint-mobile) {
+            .section {
+                &__title {
+                    font-size: 36px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 36px; /* 100% */
+                }
+
+                &__subtitle {
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px; /* 120% */
+                }
+
+                &__text {
+                    max-width: 100%;
+                    br {
+                        display: none;
+                    }
+                }
+            }
+
+            .title-book {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .title-book__wrap {
+                flex: 1;
+
+                + div {
+                    display: block !important;
+                    width: 30vw;
+
+                    .book {
+                        height: 50vw;
+                        top: auto;
+                        &__image {
+                            height: 100%;
+                            top: -10px;
+                        }
+                    }
+                }
+            }
+
+            .section__text + div {
+                display: none !important;
+            }
+
+            .form {
+                &__group {
+                    justify-content: center;
+                }
+
+                &__note {
+                    text-align: center;
+                }
+            }
         }
     }
 
@@ -891,7 +964,7 @@ section {
         line-height: 19px; /* 105.556% */
         flex: 0 0 350px;
         width: 350px;
-        max-width: calc(100% - 74px);
+        max-width: calc(100% - 54px);
 
         &::placeholder {
             color: $color-text-light;

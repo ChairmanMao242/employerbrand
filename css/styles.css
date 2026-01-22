@@ -98,6 +98,14 @@ section {
     margin-top: -20px;
   }
 }
+@media (max-width: 767px) {
+  .icon.icon--star.icon--star-small {
+    width: 35.31px;
+    height: 35.31px;
+    margin-left: 0;
+    margin-top: -6px;
+  }
+}
 
 .icon--star.icon--top-right {
   position: absolute;
@@ -341,6 +349,9 @@ section {
   position: absolute;
   top: 0;
 }
+.section--final .title-book__wrap + div {
+  display: none !important;
+}
 @media (max-width: 1279px) {
   .section--final {
     flex-wrap: wrap;
@@ -369,6 +380,54 @@ section {
   .section--final .book__image {
     height: 339px;
     top: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .section--final .section__title {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 100% */
+  }
+  .section--final .section__subtitle {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+  }
+  .section--final .section__text {
+    max-width: 100%;
+  }
+  .section--final .section__text br {
+    display: none;
+  }
+  .section--final .title-book {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section--final .title-book__wrap {
+    flex: 1;
+  }
+  .section--final .title-book__wrap + div {
+    display: block !important;
+    width: 30vw;
+  }
+  .section--final .title-book__wrap + div .book {
+    height: 50vw;
+    top: auto;
+  }
+  .section--final .title-book__wrap + div .book__image {
+    height: 100%;
+    top: -10px;
+  }
+  .section--final .section__text + div {
+    display: none !important;
+  }
+  .section--final .form__group {
+    justify-content: center;
+  }
+  .section--final .form__note {
+    text-align: center;
   }
 }
 .section--assessment .section__title {
@@ -670,7 +729,7 @@ section {
   line-height: 19px; /* 105.556% */
   flex: 0 0 350px;
   width: 350px;
-  max-width: calc(100% - 74px);
+  max-width: calc(100% - 54px);
 }
 .form__input::placeholder {
   color: #52668e;
