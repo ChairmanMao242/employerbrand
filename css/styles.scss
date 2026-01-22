@@ -462,6 +462,9 @@ section {
             top: -61px;
             &__image {
                 height: 439px;
+                max-width: none;
+                position: absolute;
+                top: 0;
             }
         }
     }

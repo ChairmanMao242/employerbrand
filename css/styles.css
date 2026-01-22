@@ -329,6 +329,9 @@ section {
 }
 .section--final .book__image {
   height: 439px;
+  max-width: none;
+  position: absolute;
+  top: 0;
 }
 .section--assessment .section__title {
   margin-bottom: 14px;
