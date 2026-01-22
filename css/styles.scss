@@ -32,9 +32,10 @@ $gradient-purple: radial-gradient(
 $font-family-primary: "Barlow Semi Condensed", sans-serif;
 
 // Breakpoints
-$breakpoint-mobile: 768px;
-$breakpoint-tablet: 1024px;
-$breakpoint-desktop: 1280px;
+$breakpoint-mobile: 767px;
+
+$breakpoint-tablet: 991px;
+$breakpoint-desktop: 1279px;
 
 // Container
 $container-max-width: 1200px;
@@ -143,18 +144,9 @@ input {
 /* Logo Component
    ========================================================================== */
 
-.logo {
-    position: absolute;
-    top: 36px;
-    left: 47px;
-    height: 38px;
-    width: 124px;
-    display: block;
-}
-
 section {
     width: $container-max-width;
-    max-width: 100%;
+    max-width: calc(100% - 160px);
     margin: 0 auto;
     position: relative;
 }
@@ -175,14 +167,23 @@ section {
     transform: rotate(-2.731deg);
     top: -42px;
     right: -32px;
+
+    @include respond-to($breakpoint-desktop) {
+        width: 70px;
+        height: 75px;
+        top: 0;
+        right: -10px;
+    }
 }
 
 .book {
-    &__image {
-        max-width: none;
-        position: absolute;
-        top: 0;
-        height: 678px;
+    .desktop & {
+        &__image {
+            max-width: none;
+            position: absolute;
+            top: 0;
+            height: 678px;
+        }
     }
 }
 /* Hero Component
@@ -190,7 +191,7 @@ section {
 
 .hero {
     background: $gradient-purple;
-    border-radius: 29px 58px 29px 29px;
+    border-radius: 29px 100px 29px 29px;
     padding: 0 80px;
     margin-bottom: 50px;
     position: relative;
@@ -214,6 +215,11 @@ section {
         padding-top: 153px;
         padding-bottom: 106px;
         width: 614px;
+
+        .page-thank-you & {
+            padding-top: 192px;
+            padding-bottom: 154px;
+        }
     }
 
     &__title {
@@ -224,32 +230,169 @@ section {
         font-weight: 500;
         line-height: 54px; /* 100% */
         margin-bottom: 25px;
-
-        @include respond-to($breakpoint-mobile) {
-        }
     }
 
     &__subtitle {
-        color: $color-white;
-        font-family: "Barlow Semi Condensed";
-        font-size: 26px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 32px; /* 123.077% */
-        margin-bottom: 37px;
+        & {
+            color: $color-white;
+            font-family: "Barlow Semi Condensed";
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; /* 123.077% */
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        + .hero__subtitle {
+            margin-top: 19px;
+
+            .page-thank-you & {
+                max-width: 540px;
+            }
+        }
 
         @include respond-to($breakpoint-mobile) {
-            font-size: 1.25rem;
         }
     }
 
-    .book {
-        text-align: right;
-        position: relative;
-        margin-top: 28px;
-        flex: 1;
+    .subtitle-wrap + div > form {
+        margin-top: 37px;
+    }
 
-        @include respond-to($breakpoint-mobile) {
+    .book {
+        .desktop & {
+            text-align: right;
+            position: relative;
+            margin-top: 28px;
+            flex: 1;
+        }
+    }
+
+    &__logo {
+        position: absolute;
+        top: 36px;
+        left: 47px;
+        height: 38px;
+        width: 124px;
+        display: block;
+    }
+
+    @include respond-to($breakpoint-desktop) {
+        &__text {
+            padding-top: 122px;
+            padding-bottom: 40px;
+            width: 100%;
+        }
+
+        &__logo {
+            top: 21px;
+            left: 28px;
+        }
+        .subtitle-wrap {
+            display: flex;
+            flex-wrap: wrap;
+
+            .hero__subtitle {
+                max-width: 640px;
+                flex: 1;
+
+                + .tablet {
+                    flex: 1;
+                }
+            }
+
+            + div > form {
+                margin: -48px auto 0;
+
+                .form {
+                    &__group {
+                        justify-content: center;
+                    }
+                    &__note {
+                        text-align: center;
+                    }
+                }
+            }
+            .book {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 300 / 511;
+                top: -30px;
+
+                img {
+                    position: absolute;
+                    height: 100%;
+                    width: auto;
+                    max-width: none;
+                    top: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    @include respond-to($breakpoint-mobile) {
+        &__logo {
+            top: 17px;
+            left: 25px;
+            width: 97px;
+            height: 30px;
+        }
+
+        &__text {
+            padding-top: 84px;
+            padding-bottom: 34px;
+        }
+
+        &__title {
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 40px; /* 100% */
+            br {
+                display: none;
+            }
+        }
+
+        &__subtitle {
+            font-family: "Barlow Semi Condensed";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px; /* 120% */
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+
+        .subtitle-wrap {
+            flex: 0 0 100%;
+            max-width: 100%;
+
+            + div > form {
+                margin-top: 0;
+            }
+
+            .hero {
+                &__subtitle {
+                    + .tablet {
+                        overflow: visible;
+                        height: 400px;
+                        position: relative;
+                        margin: 0 auto;
+                        flex: 0 0 260px;
+
+                        .book {
+                            position: absolute;
+                            top: 0;
+                            aspect-ratio: auto;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -271,8 +414,12 @@ section {
 
     &--purple {
         background: $gradient-purple;
-        border-radius: 29px 58px 29px 29px;
+        border-radius: 29px 100px 29px 29px;
         position: relative;
+    }
+
+    &--assessment {
+        padding: 45px 40px 33px;
     }
 
     &__content {
@@ -319,6 +466,14 @@ section {
         }
     }
 
+    &--assessment {
+        .section {
+            &__title {
+                margin-bottom: 14px;
+            }
+        }
+    }
+
     &__decoration {
         text-align: right;
     }
@@ -331,6 +486,9 @@ section {
         font-weight: 500;
         line-height: 49px; /* 106.522% */
 
+        &--center {
+            text-align: center;
+        }
         /* remove line-height top gap */
         position: relative;
         top: -9px;
@@ -368,8 +526,142 @@ section {
             color: $color-white;
         }
     }
+
+    &--per-chi {
+        .section {
+            &__title {
+                font-size: 54px;
+            }
+        }
+        @include respond-to($breakpoint-desktop) {
+            padding-top: 44px;
+            padding-bottom: 36px;
+
+            .section,
+            .list {
+                &__title {
+                    font-size: 46px;
+                    margin-bottom: 47px;
+                }
+                &__text {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+                }
+                &__icon {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+            .cta {
+                text-align: center;
+            }
+        }
+    }
+
+    &--motivi {
+        .section,
+        .list {
+            &__text {
+                @include respond-to($breakpoint-desktop) {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+                }
+            }
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            padding-top: 46px;
+            padding-bottom: 36px;
+
+            .list {
+                &--reasons {
+                    gap: 25px;
+                }
+            }
+        }
+
+        @include respond-to($breakpoint-mobile) {
+            padding-top: 41px;
+            padding-bottom: 22px;
+
+            .section {
+                &__title {
+                    font-size: 36px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 36px; /* 100% */
+                    margin-bottom: 39px;
+                }
+            }
+            .list {
+                &--reasons {
+                    gap: 19px;
+                }
+            }
+            .cta {
+                margin-top: 39px;
+            }
+        }
+    }
+
+    &--faq {
+        .section {
+            &__text {
+                @include respond-to($breakpoint-desktop) {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+                }
+            }
+        }
+    }
+
+    &--fianl {
+        .section {
+            &__title {
+                @include respond-to($breakpoint-desktop) {
+                    font-size: 46px;
+                }
+            }
+            &__text {
+                @include respond-to($breakpoint-desktop) {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+                }
+            }
+        }
+    }
 }
 
+/* Assessment Component
+   ========================================================================== */
+
+.assessment {
+    @include respond-to($breakpoint-tablet) {
+    }
+    &__benefits {
+        background: linear-gradient(135deg, #6c689b 0%, #4d668c 100%);
+        color: $color-white;
+        border-radius: 21px;
+        padding: 45px 30px 25px;
+        margin-bottom: 39px;
+    }
+}
+
+.benefit-list {
+    list-style-type: disc;
+    padding-left: 20px;
+
+    &__item {
+        color: $color-white;
+        leading-trim: both;
+        text-edge: cap;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px; /* 115.385% */
+        padding-bottom: 20px;
+    }
+}
 /* List Component
    ========================================================================== */
 
@@ -454,7 +746,7 @@ section {
         line-height: 19px; /* 105.556% */
         flex: 0 0 350px;
         width: 350px;
-        max-width: 100%;
+        max-width: calc(100% - 74px);
 
         &::placeholder {
             color: $color-text-light;
@@ -506,13 +798,54 @@ section {
     }
 }
 
+@include respond-to($breakpoint-mobile) {
+    .form {
+        &__group {
+            gap: 10px;
+        }
+        &__input {
+            font-size: 16px;
+            padding: 7px 17px;
+            border-radius: 7px;
+        }
+        &__submit {
+            width: 43px;
+            height: 43px;
+            border-radius: 7px;
+        }
+
+        &__note {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 19px; /* 126.667% */
+        }
+    }
+}
+
 /* Button Component
    ========================================================================== */
+.button-group {
+    display: flex;
+    gap: 14px;
+
+    &--center {
+        justify-content: center;
+    }
+}
 
 .button {
-    padding: 18px 17px 18px 34px;
-    border-radius: 10px;
+    padding: 18px 34px;
 
+    &--with-icon {
+        padding-right: 17px;
+    }
+
+    &--icon {
+        padding: 18px;
+    }
+
+    border-radius: 10px;
     font-family: "Barlow Semi Condensed";
     font-size: 20px;
     font-style: normal;
@@ -523,11 +856,6 @@ section {
     transition: background-color 0.3s ease;
     display: inline-flex;
     align-items: center;
-
-    @include respond-to($breakpoint-mobile) {
-        font-size: 1rem;
-    }
-
     &--primary {
         background-color: $color-primary;
         color: $color-white;
@@ -537,13 +865,55 @@ section {
         }
     }
 
-    &__text {
-        // Button text wrapper
-    }
-
     &__icon {
         width: 20px;
         height: 20px;
+    }
+
+    @include respond-to($breakpoint-mobile) {
+        font-size: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 10px;
+    }
+}
+/* Feature Grid Component
+   ========================================================================== */
+
+.feature-grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+/* Feature Component
+   ========================================================================== */
+
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        margin-top: 4px;
+
+        @include respond-to($breakpoint-mobile) {
+        }
+    }
+
+    &__text {
+        color: $color-secondary;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 46px; /* 209.091% */
+
+        @include respond-to($breakpoint-mobile) {
+        }
     }
 }
 
@@ -560,7 +930,8 @@ section {
     }
 
     &__note {
-        font-size: 1.125rem;
+        font-size: 18px;
+        margin-top: 5px;
 
         &--dark {
             color: $color-secondary;
@@ -606,9 +977,44 @@ section {
     }
 }
 
-/* ==========================================================================
-   #UTILITIES
-   Helper classes with ability to override anything
-   ========================================================================== */
+.tablet {
+    display: none !important;
+}
 
-// Intentionally left minimal - no utility classes needed for this design
+@include respond-to($breakpoint-desktop) {
+    .desktop {
+        display: none !important;
+    }
+    .tablet {
+        display: block !important;
+    }
+}
+
+@include respond-to($breakpoint-desktop) {
+    .wrapper {
+        padding-top: 19px;
+    }
+    .section,
+    .hero {
+        padding-left: 40px;
+        padding-right: 40px;
+        max-width: calc(100% - 80px);
+        margin-bottom: 21px;
+    }
+}
+
+@include respond-to($breakpoint-tablet) {
+    .section,
+    .hero {
+        max-width: calc(100% - 30px);
+    }
+}
+
+@include respond-to($breakpoint-mobile) {
+    .section,
+    .hero {
+        padding-left: 24px;
+        padding-right: 24px;
+        max-width: calc(100% - 20px);
+    }
+}

@@ -75,18 +75,9 @@ input {
    ========================================================================== */
 /* Logo Component
    ========================================================================== */
-.logo {
-  position: absolute;
-  top: 36px;
-  left: 47px;
-  height: 38px;
-  width: 124px;
-  display: block;
-}
-
 section {
   width: 1200px;
-  max-width: 100%;
+  max-width: calc(100% - 160px);
   margin: 0 auto;
   position: relative;
 }
@@ -108,8 +99,16 @@ section {
   top: -42px;
   right: -32px;
 }
+@media (max-width: 1279px) {
+  .icon--star.icon--top-right {
+    width: 70px;
+    height: 75px;
+    top: 0;
+    right: -10px;
+  }
+}
 
-.book__image {
+.desktop .book__image {
   max-width: none;
   position: absolute;
   top: 0;
@@ -120,7 +119,7 @@ section {
    ========================================================================== */
 .hero {
   background: radial-gradient(circle at 70% 120%, rgb(202, 111, 201) 0%, rgb(140, 106, 171) 25.962%, rgb(108, 104, 155) 38.942%, rgb(77, 102, 140) 51.923%, rgb(43, 72, 107) 75.962%, rgb(26, 57, 90) 87.981%, rgb(9, 42, 74) 100%);
-  border-radius: 29px 58px 29px 29px;
+  border-radius: 29px 100px 29px 29px;
   padding: 0 80px;
   margin-bottom: 50px;
   position: relative;
@@ -139,6 +138,10 @@ section {
   padding-bottom: 106px;
   width: 614px;
 }
+.page-thank-you .hero__text {
+  padding-top: 192px;
+  padding-bottom: 154px;
+}
 .hero__title {
   color: #ffffff;
   font-family: "Barlow Semi Condensed";
@@ -155,19 +158,129 @@ section {
   font-style: normal;
   font-weight: 400;
   line-height: 32px; /* 123.077% */
-  margin-bottom: 37px;
 }
-@media (max-width: 768px) {
-  .hero__subtitle {
-    font-size: 1.25rem;
-  }
+.hero__subtitle strong {
+  font-weight: 700;
 }
-.hero .book {
+.hero__subtitle + .hero__subtitle {
+  margin-top: 19px;
+}
+.page-thank-you .hero__subtitle + .hero__subtitle {
+  max-width: 540px;
+}
+.hero .subtitle-wrap + div > form {
+  margin-top: 37px;
+}
+.desktop .hero .book {
   text-align: right;
   position: relative;
   margin-top: 28px;
   flex: 1;
 }
+.hero__logo {
+  position: absolute;
+  top: 36px;
+  left: 47px;
+  height: 38px;
+  width: 124px;
+  display: block;
+}
+@media (max-width: 1279px) {
+  .hero__text {
+    padding-top: 122px;
+    padding-bottom: 40px;
+    width: 100%;
+  }
+  .hero__logo {
+    top: 21px;
+    left: 28px;
+  }
+  .hero .subtitle-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .hero .subtitle-wrap .hero__subtitle {
+    max-width: 640px;
+    flex: 1;
+  }
+  .hero .subtitle-wrap .hero__subtitle + .tablet {
+    flex: 1;
+  }
+  .hero .subtitle-wrap + div > form {
+    margin: -48px auto 0;
+  }
+  .hero .subtitle-wrap + div > form .form__group {
+    justify-content: center;
+  }
+  .hero .subtitle-wrap + div > form .form__note {
+    text-align: center;
+  }
+  .hero .subtitle-wrap .book {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 300/511;
+    top: -30px;
+  }
+  .hero .subtitle-wrap .book img {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    top: 0;
+    bottom: 0;
+  }
+}
+@media (max-width: 767px) {
+  .hero__logo {
+    top: 17px;
+    left: 25px;
+    width: 97px;
+    height: 30px;
+  }
+  .hero__text {
+    padding-top: 84px;
+    padding-bottom: 34px;
+  }
+  .hero__title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 100% */
+  }
+  .hero__title br {
+    display: none;
+  }
+  .hero__subtitle {
+    font-family: "Barlow Semi Condensed";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .hero .subtitle-wrap {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .hero .subtitle-wrap + div > form {
+    margin-top: 0;
+  }
+  .hero .subtitle-wrap .hero__subtitle + .tablet {
+    overflow: visible;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    flex: 0 0 260px;
+  }
+  .hero .subtitle-wrap .hero__subtitle + .tablet .book {
+    position: absolute;
+    top: 0;
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
 /* Section Component
    ========================================================================== */
 .section {
@@ -180,8 +293,11 @@ section {
 }
 .section--purple {
   background: radial-gradient(circle at 70% 120%, rgb(202, 111, 201) 0%, rgb(140, 106, 171) 25.962%, rgb(108, 104, 155) 38.942%, rgb(77, 102, 140) 51.923%, rgb(43, 72, 107) 75.962%, rgb(26, 57, 90) 87.981%, rgb(9, 42, 74) 100%);
-  border-radius: 29px 58px 29px 29px;
+  border-radius: 29px 100px 29px 29px;
   position: relative;
+}
+.section--assessment {
+  padding: 45px 40px 33px;
 }
 .section__content {
   display: flex;
@@ -214,6 +330,9 @@ section {
 .section--final .book__image {
   height: 439px;
 }
+.section--assessment .section__title {
+  margin-bottom: 14px;
+}
 .section__decoration {
   text-align: right;
 }
@@ -228,6 +347,9 @@ section {
   position: relative;
   top: -9px;
   margin-bottom: 60px;
+}
+.section__title--center {
+  text-align: center;
 }
 .section--faq .section__title {
   margin-bottom: 20px;
@@ -249,6 +371,110 @@ section {
 .section__subtitle--light {
   color: #ffffff;
 }
+.section--per-chi .section__title {
+  font-size: 54px;
+}
+@media (max-width: 1279px) {
+  .section--per-chi {
+    padding-top: 44px;
+    padding-bottom: 36px;
+  }
+  .section--per-chi .section__title,
+  .section--per-chi .list__title {
+    font-size: 46px;
+    margin-bottom: 47px;
+  }
+  .section--per-chi .section__text,
+  .section--per-chi .list__text {
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+  }
+  .section--per-chi .section__icon,
+  .section--per-chi .list__icon {
+    width: 24px;
+    height: 24px;
+  }
+  .section--per-chi .cta {
+    text-align: center;
+  }
+}
+@media (max-width: 1279px) {
+  .section--motivi .section__text,
+  .section--motivi .list__text {
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+  }
+}
+@media (max-width: 1279px) {
+  .section--motivi {
+    padding-top: 46px;
+    padding-bottom: 36px;
+  }
+  .section--motivi .list--reasons {
+    gap: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .section--motivi {
+    padding-top: 41px;
+    padding-bottom: 22px;
+  }
+  .section--motivi .section__title {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 100% */
+    margin-bottom: 39px;
+  }
+  .section--motivi .list--reasons {
+    gap: 19px;
+  }
+  .section--motivi .cta {
+    margin-top: 39px;
+  }
+}
+@media (max-width: 1279px) {
+  .section--faq .section__text {
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+  }
+}
+@media (max-width: 1279px) {
+  .section--fianl .section__title {
+    font-size: 46px;
+  }
+}
+@media (max-width: 1279px) {
+  .section--fianl .section__text {
+    font-size: 20px;
+    line-height: 24px; /* 120% */
+  }
+}
+
+/* Assessment Component
+   ========================================================================== */
+.assessment__benefits {
+  background: linear-gradient(135deg, #6c689b 0%, #4d668c 100%);
+  color: #ffffff;
+  border-radius: 21px;
+  padding: 45px 30px 25px;
+  margin-bottom: 39px;
+}
+
+.benefit-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.benefit-list__item {
+  color: #ffffff;
+  leading-trim: both;
+  text-edge: cap;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 115.385% */
+  padding-bottom: 20px;
+}
 
 /* List Component
    ========================================================================== */
@@ -260,7 +486,7 @@ section {
   position: relative;
   top: -15px;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .list--reasons {
     grid-template-columns: 1fr;
   }
@@ -300,7 +526,7 @@ section {
   font-weight: 400;
   line-height: 28px; /* 107.692% */
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .list__text {
     font-size: 1.25rem;
   }
@@ -329,7 +555,7 @@ section {
   line-height: 19px; /* 105.556% */
   flex: 0 0 350px;
   width: 350px;
-  max-width: 100%;
+  max-width: calc(100% - 74px);
 }
 .form__input::placeholder {
   color: #52668e;
@@ -374,10 +600,39 @@ section {
   fill: #092a4a;
 }
 
+@media (max-width: 767px) {
+  .form__group {
+    gap: 10px;
+  }
+  .form__input {
+    font-size: 16px;
+    padding: 7px 17px;
+    border-radius: 7px;
+  }
+  .form__submit {
+    width: 43px;
+    height: 43px;
+    border-radius: 7px;
+  }
+  .form__note {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px; /* 126.667% */
+  }
+}
 /* Button Component
    ========================================================================== */
+.button-group {
+  display: flex;
+  gap: 14px;
+}
+.button-group--center {
+  justify-content: center;
+}
+
 .button {
-  padding: 18px 17px 18px 34px;
+  padding: 18px 34px;
   border-radius: 10px;
   font-family: "Barlow Semi Condensed";
   font-size: 20px;
@@ -390,10 +645,11 @@ section {
   display: inline-flex;
   align-items: center;
 }
-@media (max-width: 768px) {
-  .button {
-    font-size: 1rem;
-  }
+.button--with-icon {
+  padding-right: 17px;
+}
+.button--icon {
+  padding: 18px;
 }
 .button--primary {
   background-color: #ff8428;
@@ -406,7 +662,44 @@ section {
   width: 20px;
   height: 20px;
 }
+@media (max-width: 767px) {
+  .button {
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 10px;
+  }
+}
 
+/* Feature Grid Component
+   ========================================================================== */
+.feature-grid {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+/* Feature Component
+   ========================================================================== */
+.feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.feature__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.feature__text {
+  color: #092a4a;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 46px; /* 209.091% */
+}
 /* CTA Component
    ========================================================================== */
 .cta {
@@ -418,7 +711,8 @@ section {
   text-align: center;
 }
 .cta__note {
-  font-size: 1.125rem;
+  font-size: 18px;
+  margin-top: 5px;
 }
 .cta__note--dark {
   color: #092a4a;
@@ -451,7 +745,41 @@ section {
   font-weight: 400;
   line-height: 28px;
 }
-/* ==========================================================================
-   #UTILITIES
-   Helper classes with ability to override anything
-   ========================================================================== */
+.tablet {
+  display: none !important;
+}
+
+@media (max-width: 1279px) {
+  .desktop {
+    display: none !important;
+  }
+  .tablet {
+    display: block !important;
+  }
+}
+@media (max-width: 1279px) {
+  .wrapper {
+    padding-top: 19px;
+  }
+  .section,
+  .hero {
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: calc(100% - 80px);
+    margin-bottom: 21px;
+  }
+}
+@media (max-width: 991px) {
+  .section,
+  .hero {
+    max-width: calc(100% - 30px);
+  }
+}
+@media (max-width: 767px) {
+  .section,
+  .hero {
+    padding-left: 24px;
+    padding-right: 24px;
+    max-width: calc(100% - 20px);
+  }
+}
