@@ -394,8 +394,37 @@ section {
     width: 24px;
     height: 24px;
   }
+  .section--per-chi .section__text {
+    width: 100%;
+  }
+  .section--per-chi .list-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section--per-chi .list--audience {
+    flex: 1;
+  }
+  .section--per-chi .list--audience + .tablet {
+    flex: 1;
+  }
+  .section--per-chi .list--audience + .tablet .book {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 460/511;
+    top: -30px;
+    padding-left: 5vw;
+  }
+  .section--per-chi .list--audience + .tablet .book img {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    top: 0;
+    bottom: 0;
+  }
   .section--per-chi .cta {
     text-align: center;
+    margin-top: -10px;
   }
 }
 @media (max-width: 1279px) {

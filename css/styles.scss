@@ -552,8 +552,47 @@ section {
                     height: 24px;
                 }
             }
+
+            .section {
+                &__text {
+                    width: 100%;
+                }
+            }
+
+            .list-wrap {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .list {
+                &--audience {
+                    flex: 1;
+                    + .tablet {
+                        flex: 1;
+
+                        .book {
+                            position: relative;
+                            width: 100%;
+                            aspect-ratio: 460 / 511;
+                            top: -30px;
+                            padding-left: 5vw;
+
+                            img {
+                                position: absolute;
+                                height: 100%;
+                                width: auto;
+                                max-width: none;
+                                top: 0;
+                                bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
             .cta {
                 text-align: center;
+                margin-top: -10px;
             }
         }
     }
