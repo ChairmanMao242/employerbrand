@@ -158,6 +158,13 @@ section {
     position: absolute;
     margin-left: -53px;
     margin-top: -25px;
+
+    @include respond-to($breakpoint-desktop) {
+        width: 58px;
+        height: 64px;
+        margin-left: -23px;
+        margin-top: -20px;
+    }
 }
 
 .icon--star.icon--top-right {
@@ -466,6 +473,44 @@ section {
                 position: absolute;
                 top: 0;
             }
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            flex-wrap: wrap;
+
+            .section {
+                &__title {
+                    font-size: 46px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 49px; /* 106.522% */
+                }
+                &__text {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+
+                    flex: 1;
+                    max-width: 65%;
+                }
+            }
+            .book {
+                &__image {
+                    height: 389px;
+                }
+            }
+        }
+
+        @include respond-to($breakpoint-tablet) {
+            padding-top: 62px;
+            padding-bottom: 52px;
+            .book {
+                &__image{
+                    height: 339px;
+                    top: 30px;
+                }
+            }
+        }
+        @include respond-to($breakpoint-mobile) {
         }
     }
 
