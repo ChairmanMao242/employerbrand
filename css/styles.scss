@@ -599,7 +599,7 @@ section {
 
         @include respond-to($breakpoint-mobile) {
             padding-top: 48px;
-            padding-bottom: 22px;
+            padding-bottom: 44px;
 
             .section {
                 &__title {
@@ -688,6 +688,27 @@ section {
                     line-height: 24px; /* 120% */
                 }
             }
+        }
+
+        @include respond-to($breakpoint-desktop) {
+            .faq {
+                &__answer {
+                    font-size: 20px;
+                    line-height: 24px; /* 120% */
+                }
+            }
+
+            padding-top: 40px;
+            padding-bottom: 16px;
+        }
+
+        @include respond-to($breakpoint-mobile) {
+            .faq {
+                gap: 25px;
+            }
+
+            padding-top: 32px;
+            padding-bottom: 12px;
         }
     }
 
@@ -1089,8 +1110,8 @@ section {
 @include respond-to($breakpoint-mobile) {
     .section,
     .hero {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 27px;
+        padding-right: 27px;
         max-width: calc(100% - 20px);
     }
 }
