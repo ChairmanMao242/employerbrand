@@ -1,6 +1,6 @@
-<form class="form form--hero">
+<form class="form form--hero" id="hubspotForm" data-region="eu1" data-form-id="551c7643-2cb4-4107-930f-4534da9567d6" data-portal-id="147638751">
     <div class="form__group">
-        <input type="email" class="form__input" placeholder="Inserisci qui la tua mail" required>
+        <input type="email" name="email" class="form__input" placeholder="Inserisci qui la tua mail" required>
         <button type="submit" class="form__submit">
             <svg class="icon icon--arrow" viewBox="0 0 24 24" fill="none">
                 <path d="M3 20V4L22 12L3 20ZM5 17L16.85 12L5 7V10.5L11 12L5 13.5V17Z" fill="white" />
@@ -8,4 +8,76 @@
         </button>
     </div>
     <p class="form__note">Riceverai direttamente la tua copia omaggio</p>
+    <p class="form__message" style="display: none; margin-top: 10px; color: #28a745;"></p>
 </form>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('hubspotForm');
+    const messageEl = form.querySelector('.form__message');
+    const submitButton = form.querySelector('.form__submit');
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = form.querySelector('input[name="email"]').value;
+        const portalId = form.dataset.portalId;
+        const formId = form.dataset.formId;
+        
+        // Disabilita il pulsante durante l'invio
+        submitButton.disabled = true;
+        
+        // Costruisci l'URL dell'API HubSpot
+        const apiUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+        
+        // Prepara i dati del form
+        const data = {
+            fields: [
+                {
+                    name: 'email',
+                    value: email
+                }
+            ],
+            context: {
+                pageUri: window.location.href,
+                pageName: document.title
+            }
+        };
+        
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            console.log('HubSpot response:', result);
+            
+            // HubSpot restituisce {"inlineMessage":""} in caso di successo
+            if (response.ok) {
+                messageEl.textContent = '✓ Grazie! Riceverai presto la tua copia omaggio.';
+                messageEl.style.color = '#28a745';
+                messageEl.style.display = 'block';
+                form.querySelector('input[name="email"]').value = '';
+                
+                // Reindirizza alla pagina thank-you dopo 2 secondi
+                setTimeout(() => {
+                    window.location.href = '/thank-you.html';
+                }, 2000);
+            } else {
+                // Gestisci errori specifici di HubSpot
+                const errorMessage = result.errors?.[0]?.message || 'Errore nell\'invio del form';
+                throw new Error(errorMessage);
+            }
+        } catch (error) {
+            console.error('Errore:', error);
+            messageEl.textContent = '✗ Si è verificato un errore. Riprova più tardi.';
+            messageEl.style.color = '#dc3545';
+            messageEl.style.display = 'block';
+            submitButton.disabled = false;
+        }
+    });
+});
+</script>
