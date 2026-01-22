@@ -427,6 +427,32 @@ section {
     margin-top: -10px;
   }
 }
+@media (max-width: 767px) {
+  .section--per-chi {
+    padding-top: 48px;
+    padding-bottom: 22px;
+  }
+  .section--per-chi .section__title {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 100% */
+    margin-bottom: 39px;
+  }
+  .section--per-chi .list--audience {
+    gap: 19px;
+  }
+  .section--per-chi .cta {
+    margin-top: 39px;
+    top: 0;
+  }
+  .section--per-chi .list--audience {
+    flex: 1;
+  }
+  .section--per-chi .list--audience + .tablet {
+    display: none !important;
+  }
+}
 @media (max-width: 1279px) {
   .section--motivi .section__text,
   .section--motivi .list__text {

@@ -533,6 +533,7 @@ section {
                 font-size: 54px;
             }
         }
+
         @include respond-to($breakpoint-desktop) {
             padding-top: 44px;
             padding-bottom: 36px;
@@ -593,6 +594,42 @@ section {
             .cta {
                 text-align: center;
                 margin-top: -10px;
+            }
+        }
+
+        @include respond-to($breakpoint-mobile) {
+            padding-top: 48px;
+            padding-bottom: 22px;
+
+            .section {
+                &__title {
+                    font-size: 36px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 36px; /* 100% */
+                    margin-bottom: 39px;
+                }
+            }
+
+            .list {
+                &--audience {
+                    gap: 19px;
+                }
+            }
+
+            .cta {
+                margin-top: 39px;
+                top: 0;
+            }
+
+            .list {
+                &--audience {
+                    flex: 1;
+
+                    + .tablet {
+                        display: none !important;
+                    }
+                }
             }
         }
     }
